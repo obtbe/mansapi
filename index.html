@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MANSAPI</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Header Section */
+    .header {
+      background: #ffcc00;
+      width: 100%;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 0;
+      color: black;
+    }
+
+    .header .tagline {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      font-weight: 300;
+      color: black;
+    }
+
+    .header .coming-soon {
+      margin-top: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: black;
+      text-transform: uppercase;
+      border: 2px solid black;
+      padding: 10px 20px;
+      display: inline-block;
+      border-radius: 5px;
+      background: transparent;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .header .coming-soon:hover {
+      background: black;
+      color: #ffcc00;
+    }
+
+    /* Black Section for Formulas */
+    .black-section {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Formula Container */
+    .formula-box {
+      position: relative;
+      width: 80%;
+      height: 80%;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    /* Formulas as dots */
+    .formula {
+      position: absolute;
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      animation: float 10s infinite;
+    }
+
+    /* Define positions and unique animations */
+    .formula:nth-child(1) { top: 10%; left: 30%; animation-delay: 0s; }
+    .formula:nth-child(2) { top: 20%; left: 50%; animation-delay: 1s; }
+    .formula:nth-child(3) { top: 40%; left: 20%; animation-delay: 2s; }
+    .formula:nth-child(4) { top: 50%; left: 70%; animation-delay: 3s; }
+    .formula:nth-child(5) { top: 60%; left: 40%; animation-delay: 4s; }
+    .formula:nth-child(6) { top: 70%; left: 60%; animation-delay: 5s; }
+    .formula:nth-child(7) { top: 80%; left: 30%; animation-delay: 6s; }
+
+    /* Animation for floating effect */
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Yellow Header Section -->
+  <div class="header">
+    <h1>MANSAPI</h1>
+    <p class="tagline">Making science education inclusive</p>
+    <span class="coming-soon">Coming Soon</span>
+  </div>
+
+  <!-- Black Section -->
+  <div class="black-section">
+    <div class="formula-box">
+      <!-- Moving formulas -->
+      <div class="formula">π</div>
+      <div class="formula">√x</div>
+      <div class="formula">Σ</div>
+      <div class="formula">∫ f(x) dx</div>
+      <div class="formula">E = mc²</div>
+      <div class="formula">Δ</div>
+      <div class="formula">v = u + at</div>
+    </div>
+  </div>
+</body>
+</html>
