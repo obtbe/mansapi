@@ -3,161 +3,194 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MANSAPI</title>
+  <title>MANSAPI - STEM for All</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
   <style>
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
+    
+    /* Base */
     body {
-      font-family: 'Arial', sans-serif;
-      background: black;
-      color: white;
+      font-family: 'Roboto', sans-serif;
+      background: #121212;
+      color: #e0e0e0;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      height: 100vh;
+      min-height: 100vh;
       overflow: hidden;
     }
-
-    /* Header Section */
+    
+    /* Header */
     .header {
-      background: #ffcc00;
-      width: 100%;
-      padding: 50px 20px;
+      padding: 40px 20px;
       text-align: center;
+      border-bottom: 1px solid #333;
     }
-
     .header h1 {
       font-size: 3rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      margin: 0;
-      color: black;
-    }
-
-    .header .tagline {
-      font-size: 1.2rem;
-      margin-top: 10px;
-      font-weight: 300;
-      color: black;
-    }
-
-    .header .find-out-more {
-      margin-top: 20px;
-      font-size: 1rem;
-      font-weight: bold;
-      color: black;
-      text-transform: uppercase;
-      border: 2px solid black;
-      padding: 10px 20px;
-      display: inline-block;
-      border-radius: 5px;
-      background: transparent;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-
-    .header .find-out-more:hover {
-      background: black;
+      font-weight: 700;
       color: #ffcc00;
     }
-
-    /* Black Section for Formulas */
-    .black-section {
-      position: relative;
-      width: 100%;
+    .header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #bbb;
+    }
+    .header .btn {
+      margin-top: 20px;
+      padding: 10px 25px;
+      font-size: 1rem;
+      color: #ffcc00;
+      border: 2px solid #ffcc00;
+      border-radius: 25px;
+      background: transparent;
+      transition: background 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+    }
+    .header .btn:hover {
+      background: #ffcc00;
+      color: #121212;
+    }
+    
+    /* Main Section */
+    .main {
       flex: 1;
-      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    /* Formula Container */
+    .formula-container {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-
-    /* Formula Container */
-    .formula-box {
-      position: relative;
-      width: 80%;
-      height: 80%;
-      border: 2px solid rgba(255, 255, 255, 0.2);
+    .formula-container::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
-      overflow: hidden;
+      background: radial-gradient(circle at center, transparent, rgba(255, 255, 255, 0.05));
     }
-
-    /* Formulas as dots */
+    
+    /* Center Formula */
+    .formula-center {
+      position: absolute;
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: #ffcc00;
+      z-index: 2;
+      transition: transform 0.3s ease;
+    }
+    .formula-center:hover {
+      transform: scale(1.1);
+    }
+    
+    /* Rotating Ring for Formulas */
+    .formula-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      animation: rotateRing 20s linear infinite;
+      z-index: 1;
+    }
+    
+    @keyframes rotateRing {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+    
+    /* Formulas in the ring */
     .formula {
       position: absolute;
       font-size: 1.5rem;
-      color: rgba(255, 255, 255, 0.8);
-      animation: float 10s infinite;
+      transition: transform 0.3s ease;
+      cursor: default;
     }
-
-    /* Define positions and unique animations */
-    .formula:nth-child(1) { top: 10%; left: 30%; animation-delay: 0s; }
-    .formula:nth-child(2) { top: 20%; left: 50%; animation-delay: 1s; }
-    .formula:nth-child(3) { top: 40%; left: 20%; animation-delay: 2s; }
-    .formula:nth-child(4) { top: 50%; left: 70%; animation-delay: 3s; }
-    .formula:nth-child(5) { top: 60%; left: 40%; animation-delay: 4s; }
-    .formula:nth-child(6) { top: 70%; left: 60%; animation-delay: 5s; }
-    .formula:nth-child(7) { top: 80%; left: 30%; animation-delay: 6s; }
-
-    /* Animation for floating effect */
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-      100% { transform: translateY(0); }
+    .formula:hover {
+      transform: scale(1.2);
     }
-
-    /* Footer Section */
+    
+    /* Position formulas evenly around the circle */
+    .formula:nth-child(1) { top: 10%; left: 50%; transform: translate(-50%, 0); }
+    .formula:nth-child(2) { top: 30%; right: 10%; transform: translate(0, -50%); }
+    .formula:nth-child(3) { bottom: 30%; right: 15%; transform: translate(0, 50%); }
+    .formula:nth-child(4) { bottom: 10%; left: 50%; transform: translate(-50%, 0); }
+    .formula:nth-child(5) { bottom: 30%; left: 10%; transform: translate(0, 50%); }
+    .formula:nth-child(6) { top: 30%; left: 10%; transform: translate(0, -50%); }
+    
+    /* Footer */
     .footer {
-      width: 100%;
-      background: black;
-      color: white;
-      text-align: center;
       padding: 20px;
-      position: fixed;
-      bottom: 0;
-      left: 0;
+      text-align: center;
+      border-top: 1px solid #333;
+      font-size: 1rem;
     }
-
     .footer a {
       color: #ffcc00;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
+      transition: color 0.3s ease;
     }
-
     .footer a:hover {
       text-decoration: underline;
+      color: #ffd700;
     }
   </style>
 </head>
 <body>
-  <!-- Yellow Header Section -->
-  <div class="header">
+  <header class="header">
     <h1>MANSAPI</h1>
-    <p class="tagline">Making STEM education inclusive</p>
-    <span class="find-out-more">Find Out More</span>
-  </div>
-
-  <!-- Black Section -->
-  <div class="black-section">
-    <div class="formula-box">
-      <!-- Moving formulas -->
-      <div class="formula">π</div>
-      <div class="formula">√x</div>
-      <div class="formula">Σ</div>
-      <div class="formula">∫ f(x) dx</div>
-      <div class="formula">E = mc²</div>
-      <div class="formula">Δ</div>
-      <div class="formula">v = u + at</div>
+    <p>Making STEM education inclusive</p>
+    <button class="btn">Find Out More</button>
+  </header>
+  <main class="main">
+    <div class="formula-container">
+      <!-- Center formula (will be updated via JS) -->
+      <div class="formula-center" id="centerFormula">Ω</div>
+      <!-- Rotating ring with formulas -->
+      <div class="formula-ring" id="formulaRing">
+        <div class="formula">π</div>
+        <div class="formula">√x</div>
+        <div class="formula">Σ</div>
+        <div class="formula">∫ f(x) dx</div>
+        <div class="formula">E = mc²</div>
+        <div class="formula">Δ</div>
+      </div>
     </div>
-  </div>
-
-  <!-- Footer Section -->
-  <div class="footer">
+  </main>
+  <footer class="footer">
     <p><a href="mailto:info@mansapi.org">info@mansapi.org</a></p>
-  </div>
+  </footer>
+
+  <script>
+    // JavaScript to change the center formula every full rotation (20 seconds)
+    const centerFormula = document.getElementById('centerFormula');
+    const formulas = Array.from(document.querySelectorAll('#formulaRing .formula'));
+    let currentIndex = 0;
+    
+    // Function to update the center formula with the next formula from the ring
+    function updateCenterFormula() {
+      // Cycle through the formulas
+      currentIndex = (currentIndex + 1) % formulas.length;
+      centerFormula.textContent = formulas[currentIndex].textContent;
+    }
+    
+    // Update the center formula every 20 seconds (matching the rotation duration)
+    setInterval(updateCenterFormula, 20000);
+  </script>
 </body>
 </html>

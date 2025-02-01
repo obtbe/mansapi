@@ -2,6 +2,7 @@
 https://www.make.com/en
 
 The students of today are the engineers of tomorrow (You can say it in a better way)
+Chance to help students come out of Math Phobia
 
 - Talk about the inequality in early age education.
 From unicef (https://www.unicef.org/mali/en/education):
