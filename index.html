@@ -159,9 +159,7 @@
   </header>
   <main class="main">
     <div class="formula-container">
-      <!-- Center formula (will be updated via JS) -->
       <div class="formula-center" id="centerFormula">Ω</div>
-      <!-- Rotating ring with formulas -->
       <div class="formula-ring" id="formulaRing">
         <div class="formula">π</div>
         <div class="formula">√x</div>
@@ -173,23 +171,16 @@
     </div>
   </main>
   <footer class="footer">
-    <p><a href="mailto:info@mansapi.org">info@mansapi.org</a></p>
+    <a href="mailto:info@mansapi.org">info@mansapi.org</a>
   </footer>
-
   <script>
-    // JavaScript to change the center formula every full rotation (20 seconds)
     const centerFormula = document.getElementById('centerFormula');
     const formulas = Array.from(document.querySelectorAll('#formulaRing .formula'));
     let currentIndex = 0;
-    
-    // Function to update the center formula with the next formula from the ring
     function updateCenterFormula() {
-      // Cycle through the formulas
       currentIndex = (currentIndex + 1) % formulas.length;
       centerFormula.textContent = formulas[currentIndex].textContent;
     }
-    
-    // Update the center formula every 20 seconds (matching the rotation duration)
     setInterval(updateCenterFormula, 20000);
   </script>
 </body>
