@@ -1,8 +1,11 @@
 
 https://www.make.com/en
+https://github.com/mlss-senegal/mlss-senegal.github.io/
 
 The students of today are the engineers of tomorrow (You can say it in a better way)
 Chance to help students come out of Math Phobia
+
+- Is your struggling with Math?
 
 - Talk about the inequality in early age education.
 From unicef (https://www.unicef.org/mali/en/education):
